@@ -9,7 +9,6 @@ import { redirectToSignIn } from "@clerk/nextjs/server";
 import { use } from "react";
 function authenticateAndRedirect(): string {
    const { userId } = auth();
-   // console.log(userId);
    if (!userId) {
       redirect("/");
    }
@@ -39,6 +38,7 @@ type GetAllJobsActionTypes = {
    page?: number;
    limit?: number;
 };
+
 export async function getAllJobsAction({ search, jobStatus, page = 1, limit = 10 }: GetAllJobsActionTypes): Promise<{
    jobs: JobType[];
    count: number;
@@ -54,16 +54,10 @@ export async function getAllJobsAction({ search, jobStatus, page = 1, limit = 10
          whereClause = {
             ...whereClause,
             OR: [
-               {
-                  position: {
-                     contains: search,
-                  },
-               },
-               {
-                  company: {
-                     contains: search,
-                  },
-               },
+               { position: { contains: search, mode: "insensitive" } },
+               { company: { contains: search, mode: "insensitive" } },
+               { location: { contains: search, mode: "insensitive" } },
+               { mode: { contains: search, mode: "insensitive" } },
             ],
          };
       }
@@ -73,13 +67,20 @@ export async function getAllJobsAction({ search, jobStatus, page = 1, limit = 10
             status: jobStatus,
          };
       }
+      const skip = (page - 1) * limit;
       const jobs: JobType[] = await prisma.job.findMany({
          where: whereClause,
+         skip,
+         take: limit,
          orderBy: {
             createdAt: "desc",
          },
       });
-      return { jobs, count: 0, page: 1, totalPages: 0 };
+      const count: number = await prisma.job.count({
+         where: whereClause,
+      });
+      const totalPages = Math.ceil(count / limit);
+      return { jobs, count, page, totalPages };
    } catch (error) {
       console.log(error);
       return { jobs: [], count: 0, page: 1, totalPages: 0 };
@@ -152,7 +153,7 @@ export async function getStatsAction(): Promise<{
             status: true,
          },
          where: {
-            clerkId: userId, // replace userId with the actual clerkId
+            clerkId: userId,
          },
       });
       const statsObject = stats.reduce((acc, curr) => {

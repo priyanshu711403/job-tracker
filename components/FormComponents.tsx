@@ -5,7 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 
 type CustomFormFieldProps = {
    name: string;
-   control: Control<any>;
+   control: Control<TFieldValues>;
 };
 export function CustomFormField({ name, control }: CustomFormFieldProps) {
    return (

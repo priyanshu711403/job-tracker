@@ -5,8 +5,6 @@ import { JobType, CreateAndEditJobType, createAndEditJobSchema, JobStatus } from
 import { redirect } from "next/navigation";
 import { Prisma } from "@prisma/client";
 import dayjs from "dayjs";
-// import { redirectToSignIn } from "@clerk/nextjs/server";
-// import { use } from "react";
 function authenticateAndRedirect(): string {
    const { userId } = auth();
    if (!userId) {
@@ -114,13 +112,10 @@ export async function getSingleJobAction(id: string): Promise<JobType | null> {
          },
       });
    } catch (error) {
-      // job = null;
-      console.error("Error fetching job:", error);
-      throw new Error("Error fetching job");
+      job = null;
    }
    if (!job) {
-      // redirect("/jobs");
-      throw new Error("Job not found"); // Use error handling instead of redirecting here
+      redirect("/jobs");
    }
    return job;
 }

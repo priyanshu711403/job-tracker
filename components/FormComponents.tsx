@@ -26,7 +26,7 @@ export function CustomFormField({ name, control }: CustomFormFieldProps) {
 }
 type CustomFormSelectProps = {
    name: string;
-   control: Control<any>;
+   control: Control<TFieldValues>;
    items: string[];
    labelText?: string;
 };

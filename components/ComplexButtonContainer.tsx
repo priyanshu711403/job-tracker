@@ -34,7 +34,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
 
    const addPageButton = ({ page, activeClass }: ButtonProps) => {
       return (
-         <Button key={page} size="icon" variant={activeClass ? "default" : "outline"} onClick={() => handlePageChange(page)}>
+         <Button key={page} size="sm" variant={activeClass ? "default" : "outline"} onClick={() => handlePageChange(page)}>
             {page}
          </Button>
       );
@@ -105,7 +105,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
       }
       if (currentPage < totalPages - 3) {
          pageButtons.push(
-            <Button size="icon" variant="outline" key="dots-1">
+            <Button size="sm" variant="outline" key="dots-1">
                ...
             </Button>
          );
@@ -126,6 +126,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
             className="flex items-center gap-x-2 "
             variant="outline"
             disabled={currentPage === 1}
+            size="sm"
             onClick={() => {
                // const prevPage = currentPage - 1;
                // if (prevPage < 1) prevPage = totalPages;
@@ -140,6 +141,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
          <Button
             className="flex items-center gap-x-2 "
             disabled={currentPage === totalPages}
+            size="sm"
             onClick={() => {
                // let nextPage = currentPage + 1;
                // if (nextPage > totalPages) nextPage = 1;

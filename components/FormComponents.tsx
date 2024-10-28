@@ -2,10 +2,11 @@ import { Control } from "react-hook-form";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
+// import { CreateAndEditJobType } from "@/utils/types";
 
 type CustomFormFieldProps = {
    name: string;
-   control: Control<TFieldValues>;
+   control: Control<any>;
 };
 export function CustomFormField({ name, control }: CustomFormFieldProps) {
    return (
@@ -26,7 +27,7 @@ export function CustomFormField({ name, control }: CustomFormFieldProps) {
 }
 type CustomFormSelectProps = {
    name: string;
-   control: Control<TFieldValues>;
+   control: Control<any>;
    items: string[];
    labelText?: string;
 };

@@ -1,7 +1,7 @@
 import ChartsContainer from "@/components/ChartsContainer";
 import StatsContainer from "@/components/StatsContainer";
 import { getChartsDataAction, getStatsAction } from "@/utils/actions";
-import { dehydrate, HydrationBoundary, QueryClient, useQueryClient } from "@tanstack/react-query";
+import { dehydrate, HydrationBoundary, QueryClient } from "@tanstack/react-query";
 
 async function StatsPage() {
    const queryClient = new QueryClient();

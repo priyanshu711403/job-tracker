@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Logo from "../assets/logo.svg";
-import LinksDropdown from "./LinksDropdown";
+// import LinksDropdown from "./LinksDropdown";
 import links from "./../utils/links";
 import { Button } from "./ui/button";
 import Link from "next/link";

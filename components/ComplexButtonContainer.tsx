@@ -18,7 +18,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
    const router = useRouter();
    const pathname = usePathname();
 
-   const pageButtons = Array.from({ length: totalPages }, (_, i) => i + 1);
+   // const pageButtons = Array.from({ length: totalPages }, (_, i) => i + 1);
 
    const handlePageChange = (page: number) => {
       const defaultParams = {
@@ -27,7 +27,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
          page: String(page),
       };
 
-      let params = new URLSearchParams(defaultParams);
+      const params = new URLSearchParams(defaultParams);
 
       router.push(`${pathname}?${params.toString()}`);
    };
@@ -127,9 +127,9 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
             variant="outline"
             disabled={currentPage === 1}
             onClick={() => {
-               let prevPage = currentPage - 1;
+               // const prevPage = currentPage - 1;
                // if (prevPage < 1) prevPage = totalPages;
-               handlePageChange(prevPage);
+               handlePageChange(currentPage - 1);
             }}
          >
             <ChevronLeft />
@@ -141,9 +141,9 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
             className="flex items-center gap-x-2 "
             disabled={currentPage === totalPages}
             onClick={() => {
-               let nextPage = currentPage + 1;
+               // let nextPage = currentPage + 1;
                // if (nextPage > totalPages) nextPage = 1;
-               handlePageChange(nextPage);
+               handlePageChange(currentPage + 1);
             }}
             variant="outline"
          >

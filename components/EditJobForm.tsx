@@ -12,7 +12,7 @@ import { CustomFormField, CustomFormSelect } from "./FormComponents";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { createJobAction, getSingleJobAction, updateJobAction } from "@/utils/actions";
 import { useToast } from "@/hooks/use-toast";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 function EditJobForm({ jobId }: { jobId: string }) {
    const queryClient = useQueryClient();
    const { toast } = useToast();
@@ -22,7 +22,10 @@ function EditJobForm({ jobId }: { jobId: string }) {
       queryKey: ["job", jobId],
       queryFn: () => getSingleJobAction(jobId),
    });
-
+   //check data
+   if (!data) {
+      redirect("/jobs");
+   }
    const { mutate, isPending } = useMutation({
       mutationFn: (values: CreateAndEditJobType) => updateJobAction(jobId, values),
       onSuccess: (data) => {

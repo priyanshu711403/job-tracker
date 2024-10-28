@@ -112,10 +112,12 @@ export async function getSingleJobAction(id: string): Promise<JobType | null> {
          },
       });
    } catch (error) {
-      job = null;
+      console.log(error);
+      return null;
    }
    if (!job) {
-      redirect("/jobs");
+      // redirect("/jobs");
+      return null;
    }
    return job;
 }

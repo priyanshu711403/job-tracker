@@ -3,7 +3,6 @@ import Logo from "../assets/logo.svg";
 import LandingImg from "../assets/main.svg";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import { ThemeToggle } from "@/components/ThemeToggle";
 export default function Home() {
    return (

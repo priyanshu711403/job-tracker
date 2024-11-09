@@ -25,7 +25,6 @@ function Providers({ children }: { children: React.ReactNode }) {
                <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
          </ThemeProvider>
-         ;
       </>
    );
 }

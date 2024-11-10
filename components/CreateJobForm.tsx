@@ -7,7 +7,6 @@ import { CustomFormField, CustomFormSelect } from "./FormComponents";
 import { Button } from "./ui/button";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createJobAction } from "@/utils/actions";
-// import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/hooks/use-toast";
 
@@ -43,6 +42,10 @@ function CreateJobForm() {
    });
    async function onSubmit(values: CreateAndEditJobType) {
       mutate(values);
+      // useQuery({
+      //    queryKey: ["jobs", "", JobStatus.Pending, 1],
+      //    queryFn: () => getAllJobsAction({}),
+      // });
    }
    return (
       <Form {...form}>

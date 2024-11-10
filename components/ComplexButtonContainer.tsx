@@ -59,7 +59,6 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
          );
       }
 
-      // one before current page
       if (currentPage === 4) {
          pageButtons.push(
             addPageButton({
@@ -68,6 +67,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
             })
          );
       }
+      // one before current page
       if (currentPage !== 1 && currentPage !== 2) {
          pageButtons.push(
             addPageButton({
@@ -116,6 +116,7 @@ function ButtonContainer({ currentPage, totalPages }: ButtonContainerProps) {
             activeClass: currentPage === totalPages,
          })
       );
+      console.log(totalPages);
       return pageButtons;
    };
 

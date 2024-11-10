@@ -17,6 +17,8 @@ export default function Home() {
                   job <span className="text-primary">tracking</span> app
                </h1>
                <p className="leading-loose max-w-md mt-4">
+                  <h2 className="text-2xl font-bold">Keep track of your job applications</h2>
+                  <br />
                   Test Username- "test"
                   <br />
                   Password-"test"

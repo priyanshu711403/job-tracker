@@ -2,7 +2,6 @@ import { Control } from "react-hook-form";
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form";
 import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
-// import { CreateAndEditJobType } from "@/utils/types";
 
 type CustomFormFieldProps = {
    name: string;
